@@ -144,6 +144,8 @@ html, body {
 
 /* ─── Panel collapse / restore buttons ─────────────────────── */
 .btn-collapse-panel {
+  -webkit-appearance: none;
+  appearance: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,6 +167,8 @@ html, body {
 }
 
 .btn-restore-panel {
+  -webkit-appearance: none;
+  appearance: none;
   display: none;           /* hidden by default; shown when panel collapsed */
   align-items: center;
   justify-content: center;
@@ -194,18 +198,20 @@ html, body {
 
 /* ─── Left Panel ────────────────────────────────────────────── */
 .left-panel {
-  width: 50%;
+  /* flex-basis drives the width; transitioning it is more reliable
+     in Safari than animating width directly on a flex child */
+  flex: 0 0 50%;
   min-width: 280px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--bg-panel);
   border-right: 1px solid var(--border-dim);
-  transition: width 0.25s ease, min-width 0.25s ease, border-color 0.25s ease;
+  transition: flex-basis 0.25s ease, min-width 0.25s ease, border-color 0.25s ease;
 }
 
 .app-body.panel-hidden .left-panel {
-  width: 0;
+  flex-basis: 0;
   min-width: 0;
   border-right-color: transparent;
 }
