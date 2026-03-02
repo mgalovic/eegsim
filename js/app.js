@@ -383,6 +383,17 @@ const App = (() => {
       raf = requestAnimationFrame(() => Traces.resize());
     });
 
+    // Panel collapse / restore
+    const appBody = document.querySelector('.app-body');
+    $('btn-collapse-panel').addEventListener('click', () => {
+      appBody.classList.add('panel-hidden');
+      setTimeout(() => Traces.resize(), 270);
+    });
+    $('btn-restore-panel').addEventListener('click', () => {
+      appBody.classList.remove('panel-hidden');
+      setTimeout(() => Traces.resize(), 270);
+    });
+
     // Play / Pause sweep
     $('btn-play')?.addEventListener('click', () => {
       if (Traces.isPlaying()) {

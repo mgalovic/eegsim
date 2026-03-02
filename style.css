@@ -142,6 +142,56 @@ html, body {
   overflow: hidden;
 }
 
+/* ─── Panel collapse / restore buttons ─────────────────────── */
+.btn-collapse-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-collapse-panel:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-bright);
+}
+
+.btn-restore-panel {
+  display: none;           /* hidden by default; shown when panel collapsed */
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: calc(var(--header-h) + 10px);
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-restore-panel:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-bright);
+}
+
+/* When panel is collapsed */
+.app-body.panel-hidden .btn-restore-panel { display: flex; }
+
 /* ─── Left Panel ────────────────────────────────────────────── */
 .left-panel {
   width: 50%;
@@ -151,6 +201,13 @@ html, body {
   overflow: hidden;
   background: var(--bg-panel);
   border-right: 1px solid var(--border-dim);
+  transition: width 0.25s ease, min-width 0.25s ease, border-color 0.25s ease;
+}
+
+.app-body.panel-hidden .left-panel {
+  width: 0;
+  min-width: 0;
+  border-right-color: transparent;
 }
 
 /* Head-map area: fixed, non-scrolling */
