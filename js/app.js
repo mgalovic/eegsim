@@ -385,10 +385,12 @@ const App = (() => {
 
     // Help modal
     const helpBackdrop = $('help-backdrop');
-    $('btn-help').addEventListener('click', () => { helpBackdrop.hidden = false; });
-    $('btn-help-close').addEventListener('click', () => { helpBackdrop.hidden = true; });
-    helpBackdrop.addEventListener('click', e => { if (e.target === helpBackdrop) helpBackdrop.hidden = true; });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') helpBackdrop.hidden = true; });
+    const openHelp  = () => helpBackdrop.classList.add('open');
+    const closeHelp = () => helpBackdrop.classList.remove('open');
+    $('btn-help').addEventListener('click', openHelp);
+    $('btn-help-close').addEventListener('click', closeHelp);
+    helpBackdrop.addEventListener('click', e => { if (e.target === helpBackdrop) closeHelp(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeHelp(); });
 
     // Panel collapse / restore
     const appBody = document.querySelector('.app-body');
