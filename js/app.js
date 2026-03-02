@@ -47,7 +47,7 @@ const App = (() => {
     leftCentral: {
       label:      'Left Central',
       source:     { x: ELECTRODES.C3.x,  y: ELECTRODES.C3.y  },
-      amplitude:  100, spread: 35, polarity: +1,
+      amplitude:  100, spread: 35, polarity: -1,
       montageKey: 'bipolarLongitudinal',
     },
     occipital: {
@@ -382,6 +382,13 @@ const App = (() => {
       if (raf) cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => Traces.resize());
     });
+
+    // Help modal
+    const helpBackdrop = $('help-backdrop');
+    $('btn-help').addEventListener('click', () => { helpBackdrop.hidden = false; });
+    $('btn-help-close').addEventListener('click', () => { helpBackdrop.hidden = true; });
+    helpBackdrop.addEventListener('click', e => { if (e.target === helpBackdrop) helpBackdrop.hidden = true; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') helpBackdrop.hidden = true; });
 
     // Panel collapse / restore
     const appBody = document.querySelector('.app-body');

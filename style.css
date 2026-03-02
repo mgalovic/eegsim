@@ -135,6 +135,119 @@ html, body {
   border: 1px solid var(--accent-border);
 }
 
+/* ─── Help Button ───────────────────────────────────────────── */
+.btn-help {
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-help:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-bright);
+}
+
+/* ─── Help Modal ────────────────────────────────────────────── */
+.help-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.help-backdrop[hidden] { display: none; }
+
+.help-modal {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+}
+
+.help-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-dim);
+  flex-shrink: 0;
+}
+
+.help-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.btn-help-close {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 15px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s;
+}
+
+.btn-help-close:hover { color: var(--text-primary); }
+
+.help-body {
+  padding: 16px 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.help-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 5px;
+}
+
+.help-section p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.help-section strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 /* ─── App Body ──────────────────────────────────────────────── */
 .app-body {
   display: flex;

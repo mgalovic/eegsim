@@ -31,8 +31,50 @@
     </div>
     <div class="header-right">
       <span class="pill pill-blue">10-20 System</span>
+      <button class="btn-help" id="btn-help" title="How to use">?</button>
     </div>
   </header>
+
+  <!-- ── Help Modal ──────────────────────────────────────────── -->
+  <div class="help-backdrop" id="help-backdrop" hidden>
+    <div class="help-modal" role="dialog" aria-modal="true" aria-label="Help">
+      <div class="help-header">
+        <span class="help-title">How to use</span>
+        <button class="btn-help-close" id="btn-help-close" title="Close">✕</button>
+      </div>
+      <div class="help-body">
+
+        <div class="help-section">
+          <div class="help-section-label">Placing a source</div>
+          <p>Click or drag anywhere inside the head map to place a cortical source. The EEG traces update instantly. Use the scenario buttons for quick demos.</p>
+        </div>
+
+        <div class="help-section">
+          <div class="help-section-label">Source controls</div>
+          <p><strong>Amplitude</strong> — peak source voltage (µV).<br>
+          <strong>Spread σ</strong> — spatial extent of the field; larger values affect more electrodes.<br>
+          <strong>Polarity</strong> — negative (standard for most spikes) or positive.<br>
+          <strong>Dipole</strong> — Radial: single-polarity field. Tangential: biphasic field with adjustable angle and pole separation.</p>
+        </div>
+
+        <div class="help-section">
+          <div class="help-section-label">Reading the traces</div>
+          <p>Negative deflections go <strong>up</strong> (standard EEG convention). In a bipolar montage, a <strong>phase reversal</strong> — two adjacent channels deflecting in opposite directions — identifies the electrode closest to the source. Enable <em>Highlights</em> to mark these in amber.</p>
+        </div>
+
+        <div class="help-section">
+          <div class="help-section-label">Montage &amp; sensitivity</div>
+          <p>Switch between bipolar (longitudinal, transverse, ring) and referential (linked mastoids, average, Cz) montages. Sensitivity controls the µV-per-mm gain — lower values make small signals visible, higher values prevent large spikes from clipping.</p>
+        </div>
+
+        <div class="help-section">
+          <div class="help-section-label">Background &amp; sweep</div>
+          <p>Add a sinusoidal background rhythm (delta → gamma) to simulate ongoing EEG activity. Press <strong>▶</strong> to animate a moving sweep across the trace window.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- ── Body ───────────────────────────────────────────────── -->
   <div class="app-body">
